@@ -21,7 +21,7 @@ pd.set_option('display.float_format', lambda x: '%.2f' % x)
 # 1. Text Preprocessing
 ##################################################
 
-df = pd.read_excel("Natural Language Processing (NLP)/Ödev/KOZMOS-Amazon Yorumları için Duygu Analizi/amazon.xlsx")
+df = pd.read_excel("datasets/amazon.xlsx")
 df.head()
 
 ###############################
@@ -117,7 +117,7 @@ wordcloud.to_file("amazon.png")
 # Şablonlara Göre Wordcloud
 ###############################
 
-tr_mask = np.array(Image.open("Natural Language Processing (NLP)/Ödev/KOZMOS-Amazon Yorumları için Duygu Analizi/vbo.PNG"))
+tr_mask = np.array(Image.open("vbo.PNG"))
 
 wc = WordCloud(background_color="black",
                max_words=1000,
@@ -132,7 +132,6 @@ plt.axis("off")
 plt.show()
 
 wc.to_file("amazonvbowordcloud.png")
-
 
 ##################################################
 # 3. Sentiment Analysis
@@ -202,7 +201,6 @@ random_review = pd.Series(df["Review"].sample(1).values)
 new_review = TfidfVectorizer().fit(X).transform(random_review)
 
 log_model.predict(new_review)
-
 
 ###############################
 # Random Forests
